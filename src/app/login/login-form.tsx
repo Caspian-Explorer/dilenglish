@@ -103,7 +103,8 @@ export default function AuthForm() {
           body: JSON.stringify({ idToken }),
       });
       
-      router.push('/dashboard');
+      // The redirect is now handled by the AuthProvider
+      // router.push('/dashboard');
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -133,7 +134,8 @@ export default function AuthForm() {
           title: 'Signup Successful',
           description: "You've been signed up! Redirecting to dashboard...",
       });
-      router.push('/dashboard');
+      // The redirect is now handled by the AuthProvider
+      // router.push('/dashboard');
     } catch (error: any) {
       toast({
         variant: 'destructive',

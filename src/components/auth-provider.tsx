@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { createContext, useEffect, useState, useContext } from 'react';
@@ -48,13 +49,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (loading) return;
 
-    const isProtected = ['/dashboard', '/profile', '/progress', '/pronunciation', '/dialogues', '/vocabulary', '/admin'].some(p => pathname.startsWith(p));
+    const isAppRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/profile') || pathname.startsWith('/progress') || pathname.startsWith('/pronunciation') || pathname.startsWith('/dialogues') || pathname.startsWith('/vocabulary') || pathname.startsWith('/admin');
+    const isAuthRoute = pathname === '/login';
 
-    if (!user && isProtected) {
+    if (!user && isAppRoute) {
       router.push('/login');
     }
     
-    if (user && pathname === '/login') {
+    if (user && isAuthRoute) {
       router.push('/dashboard');
     }
 
