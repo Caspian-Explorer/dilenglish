@@ -1,5 +1,6 @@
+
 import { Languages } from "lucide-react";
-import LoginForm from "./login-form";
+import AuthForm from "./login-form";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -9,17 +10,17 @@ export default function LoginPage() {
        <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-transparent to-background"></div>
       <div className="w-full max-w-md space-y-6 z-10 bg-card p-8 rounded-xl shadow-2xl">
         <div className="text-center">
-          <Link href="/" className="inline-block">
             <div className="flex justify-center items-center gap-2 mb-4">
-                <Languages className="size-10 text-primary" />
-                <h1 className="text-4xl font-bold font-headline">Dilenglish</h1>
+                <Link href="/" className="flex items-center gap-2">
+                    <Languages className="size-10 text-primary" />
+                    <h1 className="text-4xl font-bold font-headline">Dilenglish</h1>
+                </Link>
             </div>
-          </Link>
           <p className="text-muted-foreground">
             Sign in to continue your language journey
           </p>
         </div>
-        <LoginForm />
+        <AuthForm />
       </div>
     </main>
   );
