@@ -34,7 +34,7 @@ export default function ForumPostPage({ params }: { params: { id: string } }) {
   };
 
   return (
-    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6">
+    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 container pt-24">
       <div>
         <Button variant="ghost" asChild>
           <Link href="/forums" className='mb-4'>

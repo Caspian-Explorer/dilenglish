@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import { forumTopics } from '@/lib/data';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -8,7 +9,7 @@ import { MessageSquare, PlusCircle } from 'lucide-react';
 
 export default function ForumsPage() {
   return (
-    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
+    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 container pt-24">
       <div className="flex justify-between items-center">
         <div className="space-y-2">
           <h1 className="text-3xl md:text-4xl font-bold font-headline tracking-tight flex items-center gap-2">
