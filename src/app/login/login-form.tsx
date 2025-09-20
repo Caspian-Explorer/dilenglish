@@ -95,16 +95,20 @@ export default function AuthForm() {
       const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
       const idToken = await userCredential.user.getIdToken();
 
-      await fetch('/api/login', {
+      const response = await fetch('/api/login', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
           },
           body: JSON.stringify({ idToken }),
       });
+
+      if (response.ok) {
+        router.push('/dashboard');
+      } else {
+        throw new Error('Session creation failed.');
+      }
       
-      // The redirect is now handled by the AuthProvider
-      // router.push('/dashboard');
     } catch (error: any) {
       toast({
         variant: 'destructive',
@@ -122,7 +126,7 @@ export default function AuthForm() {
       const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
       const idToken = await userCredential.user.getIdToken();
 
-      await fetch('/api/login', {
+      const response = await fetch('/api/login', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -130,12 +134,16 @@ export default function AuthForm() {
           body: JSON.stringify({ idToken }),
       });
 
-      toast({
-          title: 'Signup Successful',
-          description: "You've been signed up! Redirecting to dashboard...",
-      });
-      // The redirect is now handled by the AuthProvider
-      // router.push('/dashboard');
+      if (response.ok) {
+        toast({
+            title: 'Signup Successful',
+            description: "You've been signed up! Redirecting to dashboard...",
+        });
+        router.push('/dashboard');
+      } else {
+         throw new Error('Session creation failed.');
+      }
+
     } catch (error: any) {
       toast({
         variant: 'destructive',
