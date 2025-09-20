@@ -94,6 +94,7 @@ export default function LandingPage() {
           </Link>
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link href="#features" className="hover:text-primary">Features</Link>
+            <Link href="/languages" className="hover:text-primary">Languages</Link>
             <Link href="#testimonials" className="hover:text-primary">Testimonials</Link>
             <Link href="#community" className="hover:text-primary">Community</Link>
           </nav>
