@@ -1,4 +1,4 @@
-import type { VocabularyList, DialogueScenario, ProgressData, LeaderboardUser, Badge } from '@/lib/types';
+import type { VocabularyList, DialogueScenario, ProgressData, LeaderboardUser, Badge, UserLanguageLevel } from '@/lib/types';
 import { PlaceHolderImages } from './placeholder-images';
 
 export const vocabularyLists: VocabularyList[] = [
@@ -68,6 +68,11 @@ export const userProgress: ProgressData = {
   level: 8,
   dailyStreak: 5,
 };
+
+export const userLanguageLevels: UserLanguageLevel[] = [
+  { language: 'Spanish', level: 'A2' },
+  { language: 'French', level: 'A1' },
+];
 
 const badgeData = PlaceHolderImages.filter(img => img.id.startsWith('badge-'));
 

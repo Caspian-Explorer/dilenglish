@@ -36,13 +36,13 @@ export default function LanguageDetailPage({ params }: { params: { slug: string 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader>
-            <CardTitle>Lessons</CardTitle>
-            <CardDescription>Start with the basics.</CardDescription>
+            <CardTitle>Placement Test</CardTitle>
+            <CardDescription>Assess your language level.</CardDescription>
           </CardHeader>
           <CardContent>
             <Button asChild className="w-full">
-              <Link href={`/dashboard`}>
-                Start Lesson 1
+              <Link href={`/languages/${params.slug}/test`}>
+                Start Test
               </Link>
             </Button>
           </CardContent>

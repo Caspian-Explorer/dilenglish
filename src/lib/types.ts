@@ -49,3 +49,15 @@ export type LeaderboardUser = {
   points: number;
   avatar: string;
 };
+
+export type PlacementTestQuestion = {
+  questionText: string;
+  options: string[];
+  correctOptionIndex: number;
+  difficultyLevel: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+}
+
+export type UserLanguageLevel = {
+  language: string;
+  level: string;
+}

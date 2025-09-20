@@ -4,8 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { userProgress } from "@/lib/data";
-import { Flame, Star } from "lucide-react";
+import { userProgress, userLanguageLevels } from "@/lib/data";
+import { Flame, Star, BookCheck } from "lucide-react";
 
 export default function ProfilePage() {
   const user = {
@@ -45,6 +45,23 @@ export default function ProfilePage() {
                         <p className="text-2xl font-bold">{userProgress.dailyStreak}</p>
                         <p className="text-xs text-muted-foreground flex items-center gap-1"><Flame className="h-3 w-3" /> Streak</p>
                     </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle className="font-headline flex items-center gap-2"><BookCheck /> Language Levels</CardTitle>
+                    <CardDescription>Your assessed proficiency levels from placement tests.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                    {userLanguageLevels.length > 0 ? userLanguageLevels.map(level => (
+                        <div key={level.language} className="flex justify-between items-center">
+                            <span className="font-semibold">{level.language}</span>
+                            <span className="text-primary font-bold text-lg">{level.level}</span>
+                        </div>
+                    )) : (
+                        <p className="text-sm text-muted-foreground">No placement tests taken yet.</p>
+                    )}
                 </CardContent>
             </Card>
         </div>
