@@ -1,11 +1,33 @@
-import { NextRequest, NextResponse } from 'next/server';
+import {NextRequest, NextResponse} from 'next/server';
+import {authAdmin} from '@/lib/firebase-admin';
 
 export async function middleware(request: NextRequest) {
-  return NextResponse.next();
+  const sessionCookie = request.cookies.get('session')?.value;
+
+  if (request.nextUrl.pathname.startsWith('/login')) {
+    if (sessionCookie) {
+      try {
+        await authAdmin.verifySessionCookie(sessionCookie, true);
+        return NextResponse.redirect(new URL('/dashboard', request.url));
+      } catch (error) {
+        // Invalid cookie, let them go to the login page
+      }
+    }
+    return NextResponse.next();
+  }
+
+  if (!sessionCookie) {
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  try {
+    await authAdmin.verifySessionCookie(sessionCookie, true);
+    return NextResponse.next();
+  } catch (error) {
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
 }
 
 export const config = {
-  // The matcher is removed to avoid forcing the middleware to run on the Edge Runtime.
-  // This makes it run on the Node.js runtime by default, which is more compatible.
-  // matcher: ['/((?!_next/static|favicon.ico|.*\\..*).*)'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
