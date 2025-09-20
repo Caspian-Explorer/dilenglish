@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (loading) return;
 
-    const isAppRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/profile') || pathname.startsWith('/progress') || pathname.startsWith('/pronunciation') || pathname.startsWith('/dialogues') || pathname.startsWith('/vocabulary') || pathname.startsWith('/admin') || pathname.startsWith('/languages');
+    const isAppRoute = pathname.startsWith('/dashboard') || pathname.startsWith('/profile') || pathname.startsWith('/progress') || pathname.startsWith('/pronunciation') || pathname.startsWith('/dialogues') || pathname.startsWith('/vocabulary') || pathname.startsWith('/admin') || (pathname.startsWith('/languages') && pathname.endsWith('/test'));
     const isAuthRoute = pathname === '/login';
 
     if (!user && isAppRoute) {

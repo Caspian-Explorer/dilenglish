@@ -1,9 +1,12 @@
 import {NextRequest, NextResponse} from 'next/server';
 
-const protectedPaths = ['/dashboard', '/profile', '/progress', '/pronunciation', '/dialogues', '/vocabulary', '/languages'];
+const protectedPaths = ['/dashboard', '/profile', ' /progress', '/pronunciation', '/dialogues', '/vocabulary'];
 const adminPaths = ['/admin'];
 
 function isProtected(path: string) {
+  if (path.startsWith('/languages/') && path.endsWith('/test')) {
+    return true;
+  }
   return protectedPaths.some((p) => path.startsWith(p)) || adminPaths.some((p) => path.startsWith(p));
 }
 
@@ -14,9 +17,6 @@ export function middleware(request: NextRequest) {
 
   // If user is not authenticated and is trying to access a protected path, redirect to login.
   if (!sessionCookie && isProtected(pathname)) {
-    // allow access to main languages page
-    if (pathname === '/languages') return NextResponse.next();
-    
     return NextResponse.redirect(new URL('/login', request.url));
   }
   
