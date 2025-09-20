@@ -1,4 +1,4 @@
-import type { VocabularyList, DialogueScenario, ProgressData, LeaderboardUser, Badge, UserLanguageLevel } from '@/lib/types';
+import type { VocabularyList, DialogueScenario, ProgressData, LeaderboardUser, Badge, UserLanguageLevel, ForumTopic } from '@/lib/types';
 import { PlaceHolderImages } from './placeholder-images';
 
 export const vocabularyLists: VocabularyList[] = [
@@ -88,4 +88,54 @@ export const leaderboard: LeaderboardUser[] = [
   { rank: 3, name: 'You', points: 2980, avatar: 'https://i.pravatar.cc/40?u=a042581f4e29026706d' },
   { rank: 4, name: 'Liam', points: 2800, avatar: 'https://i.pravatar.cc/40?u=a042581f4e29026707d' },
   { rank: 5, name: 'Emma', points: 2650, avatar: 'https://i.pravatar.cc/40?u=a042581f4e29026708d' },
+];
+
+export const forumTopics: ForumTopic[] = [
+  {
+    id: '1',
+    title: 'Best way to learn verb conjugations in Spanish?',
+    authorName: 'Chris P.',
+    replyCount: 12,
+    lastActivity: '2 hours ago',
+    post: {
+      id: 'p1',
+      author: { name: 'Chris P.', avatar: 'https://i.pravatar.cc/40?u=chrisp' },
+      date: '1 day ago',
+      content: 'I\'m really struggling with Spanish verb conjugations, especially in the subjunctive mood. Does anyone have tips, tricks, or resources that helped them? I\'ve tried flashcards but it\'s not sticking.',
+      replies: [
+        { id: 'r1', author: { name: 'Maria G.', avatar: 'https://i.pravatar.cc/40?u=mariag' }, date: '23 hours ago', content: 'I found that listening to Spanish music and trying to translate the lyrics really helped. You hear the conjugations in context.'},
+        { id: 'r2', author: { name: 'John D.', avatar: 'https://i.pravatar.cc/40?u=johnd' }, date: '15 hours ago', content: 'There\'s a website called Conjugue.mos that has great exercises. It drills you over and over.'},
+      ]
+    }
+  },
+  {
+    id: '2',
+    title: 'Any good French movies to watch for beginners?',
+    authorName: 'Sophie B.',
+    replyCount: 8,
+    lastActivity: '5 hours ago',
+    post: {
+      id: 'p2',
+      author: { name: 'Sophie B.', avatar: 'https://i.pravatar.cc/40?u=sophieb' },
+      date: '2 days ago',
+      content: 'Looking for some recommendations for French films that are relatively easy for a beginner to understand. I\'m trying to improve my listening skills. Preferably something on Netflix!',
+      replies: [
+        { id: 'r3', author: { name: 'Pierre L.', avatar: 'https://i.pravatar.cc/40?u=pierrel' }, date: '1 day ago', content: '"Le Dîner de Cons" is a classic comedy and the dialogue is quite clear. Highly recommend it!'},
+      ]
+    }
+  },
+  {
+    id: '3',
+    title: 'Tips for traveling in Japan with basic Japanese',
+    authorName: 'Kenji T.',
+    replyCount: 25,
+    lastActivity: '30 minutes ago',
+    post: {
+      id: 'p3',
+      author: { name: 'Kenji T.', avatar: 'https://i.pravatar.cc/40?u=kenjit' },
+      date: '3 days ago',
+      content: 'I\'m heading to Japan next month and I only know some basic phrases. Any tips for getting around, ordering food, and being polite? I\'m a bit nervous!',
+      replies: []
+    }
+  }
 ];

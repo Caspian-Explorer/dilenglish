@@ -61,3 +61,33 @@ export type UserLanguageLevel = {
   language: string;
   level: string;
 }
+
+export type ForumReply = {
+  id: string;
+  author: {
+    name: string;
+    avatar: string;
+  };
+  date: string;
+  content: string;
+};
+
+export type ForumPost = {
+  id: string;
+  author: {
+    name: string;
+    avatar: string;
+  };
+  date: string;
+  content: string;
+  replies: ForumReply[];
+};
+
+export type ForumTopic = {
+  id: string;
+  title: string;
+  authorName: string;
+  replyCount: number;
+  lastActivity: string;
+  post: ForumPost;
+};

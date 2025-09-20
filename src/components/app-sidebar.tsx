@@ -11,6 +11,7 @@ import {
   User,
   Globe,
   Shield,
+  MessageSquare,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -28,6 +29,7 @@ const navItems = [
   { href: '/pronunciation', icon: Mic, label: 'Pronunciation' },
   { href: '/dialogues', icon: MessageCircle, label: 'Dialogues' },
   { href: '/vocabulary', icon: BookOpen, label: 'Vocabulary' },
+  { href: '/forums', icon: MessageSquare, label: 'Forums' },
   { href: '/languages', icon: Globe, label: 'Languages' },
   { href: '/progress', icon: BarChart3, label: 'Progress' },
   { href: '/profile', icon: User, label: 'Profile' },
