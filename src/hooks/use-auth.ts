@@ -1,5 +1,6 @@
 'use client';
-
+// This hook is a facade for the AuthContext, but is not used in this version of the app
+// It is kept for potential future use.
 import { useContext } from 'react';
 import { AuthContext } from '@/components/auth-provider';
 

@@ -2,9 +2,14 @@ import { authAdmin } from '@/lib/firebase-admin';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'nodejs';
+
 export async function POST(request: NextRequest) {
   try {
     const { idToken } = await request.json();
+    if (!idToken) {
+        return NextResponse.json({ error: 'ID token is required' }, { status: 400 });
+    }
     const expiresIn = 60 * 60 * 24 * 5 * 1000; // 5 days
     const sessionCookie = await authAdmin.createSessionCookie(idToken, { expiresIn });
 

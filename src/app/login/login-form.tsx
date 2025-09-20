@@ -26,24 +26,8 @@ export default function LoginForm() {
     setError(null);
 
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const idToken = await userCredential.user.getIdToken();
-
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ idToken }),
-      });
-
-      if (res.ok) {
-        router.push('/dashboard');
-        router.refresh();
-      } else {
-        const data = await res.json();
-        throw new Error(data.error || 'Login failed');
-      }
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push('/dashboard');
     } catch (error: any) {
         let errorMessage = 'An unexpected error occurred.';
         if (error.code) {

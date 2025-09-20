@@ -1,7 +1,7 @@
 'use client';
 
-import React, { createContext, useEffect, useState } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import React, { createContext, useEffect, useState, useContext } from 'react';
+import { onIdTokenChanged, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { usePathname, useRouter } from 'next/navigation';
 import { Loader } from 'lucide-react';
@@ -16,6 +16,28 @@ export const AuthContext = createContext<AuthContextType>({
   loading: true,
 });
 
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
+
+async function handleTokenChange(token: string | null) {
+  const method = token ? 'POST' : 'DELETE';
+  const endpoint = token ? '/api/login' : '/api/logout';
+  
+  await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ idToken: token }),
+  });
+}
+
+
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,30 +45,30 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      setUser(user);
+    const unsubscribe = onIdTokenChanged(auth, async (newUser) => {
+      setUser(newUser);
+      const token = newUser ? await newUser.getIdToken() : null;
+      await handleTokenChange(token);
       setLoading(false);
-
-      if (user) {
-        const token = await user.getIdToken();
-         await fetch('/api/login', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ idToken: token }),
-        });
-        if (pathname === '/login') {
-            router.push('/dashboard');
-        }
-      } else {
-        if (pathname !== '/login') {
-            await fetch('/api/logout', { method: 'POST' });
-            router.push('/login');
-        }
-      }
     });
 
     return () => unsubscribe();
-  }, [router, pathname]);
+  }, []);
+
+  useEffect(() => {
+    if (loading) return;
+
+    const isProtected = ['/dashboard', '/profile', '/progress', '/pronunciation', '/dialogues', '/vocabulary'].some(p => pathname.startsWith(p));
+
+    if (!user && isProtected) {
+      router.push('/login');
+    }
+
+    if (user && pathname === '/login') {
+      router.push('/dashboard');
+    }
+
+  }, [user, loading, pathname, router]);
 
   if (loading) {
     return (
@@ -54,10 +76,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             <Loader className="animate-spin" size={32} />
         </div>
     );
-  }
-  
-  if (!user && pathname !== '/login') {
-      return null;
   }
 
   return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>;
