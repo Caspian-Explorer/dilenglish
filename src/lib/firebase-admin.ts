@@ -9,7 +9,7 @@ if (!admin.apps.length) {
     // In a real production app, you would use admin.credential.cert() or applicationDefault()
     admin.initializeApp({
       credential: applicationDefault(),
-      projectId: 'studio-5054979338-10033',
+      projectId: process.env.FIREBASE_PROJECT_ID || 'studio-5054979338-10033',
     });
   } catch (error) {
     console.error('Firebase admin initialization error', error);
