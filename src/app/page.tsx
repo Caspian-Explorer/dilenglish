@@ -102,9 +102,6 @@ const SiteHeader = () => (
             <Button variant="outline" asChild>
               <Link href="/login">Log In</Link>
             </Button>
-            <Button asChild>
-              <Link href="/login">Get Started</Link>
-            </Button>
           </div>
         </div>
       </header>
