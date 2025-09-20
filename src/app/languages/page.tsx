@@ -1,5 +1,5 @@
 import { languageList } from '@/lib/languages';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ export default function LanguagesPage() {
   };
 
   return (
-    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
+    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 pt-24">
       <div className="space-y-2">
         <h1 className="text-3xl md:text-4xl font-bold font-headline tracking-tight">
           Explore Languages
@@ -35,6 +35,13 @@ export default function LanguagesPage() {
           </ul>
         </CardContent>
       </Card>
+       <div className="text-center mt-8">
+          <Button variant="outline" asChild>
+              <Link href="/">
+                Back to Home
+              </Link>
+          </Button>
+      </div>
     </main>
   );
 }

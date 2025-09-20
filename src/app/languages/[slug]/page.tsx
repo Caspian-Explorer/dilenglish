@@ -23,7 +23,7 @@ export default function LanguageDetailPage({ params }: { params: { slug: string 
 
 
   return (
-    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
+    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 pt-24">
       <div className="space-y-2">
         <h1 className="text-3xl md:text-4xl font-bold font-headline tracking-tight">
           {languageName}
@@ -41,7 +41,7 @@ export default function LanguageDetailPage({ params }: { params: { slug: string 
           </CardHeader>
           <CardContent>
             <Button asChild className="w-full">
-              <Link href={`/languages/${params.slug}/lessons`}>
+              <Link href={`/dashboard`}>
                 Start Lesson 1
               </Link>
             </Button>

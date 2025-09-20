@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Languages, CheckCircle, Users, Star, Target, Zap, Award } from 'lucide-react';
+import RootLayout from './layout';
 
 const reasons = [
   {
@@ -83,10 +84,9 @@ const testimonials = [
   },
 ];
 
-export default function LandingPage() {
-  return (
-    <div className="bg-background text-foreground">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
+
+const SiteHeader = () => (
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
           <Link href="/" className="flex items-center gap-2">
             <Languages className="h-8 w-8 text-primary" />
@@ -108,8 +108,66 @@ export default function LandingPage() {
           </div>
         </div>
       </header>
+)
+
+const SiteFooter = () => (
+    <footer className="bg-gray-800 text-gray-300">
+          <div className="container mx-auto px-4 md:px-6 py-12">
+             <div className="grid md:grid-cols-4 gap-8">
+                <div>
+                   <h3 className="font-bold text-lg text-white">Dilenglish</h3>
+                   <p className="mt-2 text-sm">The best way to learn a language.</p>
+                </div>
+                 <div>
+                   <h3 className="font-bold text-lg text-white">LEARN</h3>
+                   <ul className="mt-4 space-y-2 text-sm">
+                      <li><Link href="/languages" className="hover:text-white">Languages</Link></li>
+                       <li><Link href="#" className="hover:text-white">Pricing</Link></li>
+                       <li><Link href="#features" className="hover:text-white">Features</Link></li>
+                   </ul>
+                </div>
+                 <div>
+                   <h3 className="font-bold text-lg text-white">COMPANY</h3>
+                   <ul className="mt-4 space-y-2 text-sm">
+                      <li><Link href="#" className="hover:text-white">About</Link></li>
+                       <li><Link href="#" className="hover:text-white">Careers</Link></li>
+                       <li><Link href="#" className="hover:text-white">Press</Link></li>
+                   </ul>
+                </div>
+                 <div>
+                   <h3 className="font-bold text-lg text-white">SOCIAL</h3>
+                   <ul className="mt-4 space-y-2 text-sm">
+                      <li><Link href="#" className="hover:text-white">Twitter</Link></li>
+                       <li><Link href="#" className="hover:text-white">Instagram</Link></li>
+                       <li><Link href="#" className="hover:text-white">Facebook</Link></li>
+                   </ul>
+                </div>
+             </div>
+             <div className="mt-12 border-t border-gray-700 pt-8 text-center text-sm">
+                <p>&copy; {new Date().getFullYear()} Dilenglish, Inc. All Rights Reserved.</p>
+             </div>
+          </div>
+      </footer>
+)
+
+
+export default function LandingPage({children}: {children?: React.ReactNode}) {
+  return (
+    <div className="bg-background text-foreground">
+      <SiteHeader />
 
       <main className="pt-16">
+        {children || <LandingPageContent />}
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}
+
+
+const LandingPageContent = () => (
+    <>
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 bg-secondary/30">
            <div className="absolute inset-0 bg-grid-pattern opacity-50"></div>
@@ -209,7 +267,7 @@ export default function LandingPage() {
              <div className="bg-primary/5 p-8 md:p-12 rounded-2xl grid md:grid-cols-2 gap-12 items-center overflow-hidden">
                 <div className="relative z-10">
                   <span className="text-sm font-semibold text-primary">USE CASE</span>
-                  <h2 className="mt-2 text-3xl md:text-4xl font-bold font-headline">
+                  <h2 className="mt-2 text-3xl mdTono-4xl font-bold font-headline">
                     Gamified Learning Experience
                   </h2>
                   <p className="mt-4 text-muted-foreground">
@@ -287,45 +345,5 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-      </main>
-
-      <footer className="bg-gray-800 text-gray-300">
-          <div className="container mx-auto px-4 md:px-6 py-12">
-             <div className="grid md:grid-cols-4 gap-8">
-                <div>
-                   <h3 className="font-bold text-lg text-white">Dilenglish</h3>
-                   <p className="mt-2 text-sm">The best way to learn a language.</p>
-                </div>
-                 <div>
-                   <h3 className="font-bold text-lg text-white">LEARN</h3>
-                   <ul className="mt-4 space-y-2 text-sm">
-                      <li><Link href="#" className="hover:text-white">Courses</Link></li>
-                       <li><Link href="#" className="hover:text-white">Pricing</Link></li>
-                       <li><Link href="#" className="hover:text-white">Features</Link></li>
-                   </ul>
-                </div>
-                 <div>
-                   <h3 className="font-bold text-lg text-white">COMPANY</h3>
-                   <ul className="mt-4 space-y-2 text-sm">
-                      <li><Link href="#" className="hover:text-white">About</Link></li>
-                       <li><Link href="#" className="hover:text-white">Careers</Link></li>
-                       <li><Link href="#" className="hover:text-white">Press</Link></li>
-                   </ul>
-                </div>
-                 <div>
-                   <h3 className="font-bold text-lg text-white">SOCIAL</h3>
-                   <ul className="mt-4 space-y-2 text-sm">
-                      <li><Link href="#" className="hover:text-white">Twitter</Link></li>
-                       <li><Link href="#" className="hover:text-white">Instagram</Link></li>
-                       <li><Link href="#" className="hover:text-white">Facebook</Link></li>
-                   </ul>
-                </div>
-             </div>
-             <div className="mt-12 border-t border-gray-700 pt-8 text-center text-sm">
-                <p>&copy; {new Date().getFullYear()} Dilenglish, Inc. All Rights Reserved.</p>
-             </div>
-          </div>
-      </footer>
-    </div>
-  );
-}
+    </>
+)
