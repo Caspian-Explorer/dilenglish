@@ -11,7 +11,7 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
-export const PlacementTestQuestionSchema = z.object({
+const PlacementTestQuestionSchema = z.object({
   questionText: z.string().describe('The main text of the question.'),
   options: z.array(z.string()).describe('A list of possible answers for the question.'),
   correctOptionIndex: z.number().describe('The index of the correct option in the options array.'),
