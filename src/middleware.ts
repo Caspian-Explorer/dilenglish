@@ -44,4 +44,6 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-export const config = {};
+export const config = {
+  matcher: ['/dashboard/:path*', '/profile/:path*', '/progress/:path*', '/pronunciation/:path*', '/dialogues/:path*', '/vocabulary/:path*', '/login'],
+};
