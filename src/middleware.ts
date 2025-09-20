@@ -1,9 +1,10 @@
 import {NextRequest, NextResponse} from 'next/server';
 
 const protectedPaths = ['/dashboard', '/profile', '/progress', '/pronunciation', '/dialogues', '/vocabulary'];
+const adminPaths = ['/admin'];
 
 function isProtected(path: string) {
-  return protectedPaths.some((p) => path.startsWith(p));
+  return protectedPaths.some((p) => path.startsWith(p)) || adminPaths.some((p) => path.startsWith(p));
 }
 
 // This middleware is now Edge-safe as it doesn't import any Node.js-specific modules.

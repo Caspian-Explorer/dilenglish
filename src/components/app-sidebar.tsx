@@ -10,6 +10,7 @@ import {
   BarChart3,
   User,
   Globe,
+  Shield,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -20,6 +21,7 @@ import {
   SidebarFooter,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
+import { useAuth } from './auth-provider';
 
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -31,8 +33,13 @@ const navItems = [
   { href: '/profile', icon: User, label: 'Profile' },
 ];
 
+const adminNavItems = [
+    { href: '/admin', icon: Shield, label: 'Admin' },
+];
+
 export default function AppSidebar() {
   const pathname = usePathname();
+  const { isAdmin } = useAuth();
 
   return (
     <Sidebar>
@@ -58,6 +65,20 @@ export default function AppSidebar() {
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
+        ))}
+        {isAdmin && adminNavItems.map((item) => (
+            <SidebarMenuItem key={item.href}>
+                <SidebarMenuButton
+                asChild
+                isActive={pathname.startsWith(item.href)}
+                tooltip={item.label}
+                >
+                <a href={item.href}>
+                    <item.icon />
+                    <span>{item.label}</span>
+                </a>
+                </SidebarMenuButton>
+            </SidebarMenuItem>
         ))}
       </SidebarMenu>
       <SidebarFooter>

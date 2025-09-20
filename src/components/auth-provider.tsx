@@ -6,14 +6,18 @@ import { auth } from '@/lib/firebase';
 import { usePathname, useRouter } from 'next/navigation';
 import { Loader } from 'lucide-react';
 
+const ADMIN_EMAIL = 'fuad.jalilov@gmail.com';
+
 interface AuthContextType {
   user: User | null;
   loading: boolean;
+  isAdmin: boolean;
 }
 
 export const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
+  isAdmin: false,
 });
 
 export const useAuth = () => {
@@ -24,33 +28,17 @@ export const useAuth = () => {
   return context;
 };
 
-// This function now handles calling our API endpoints to set/clear the session cookie.
-async function handleTokenChange(token: string | null) {
-  const endpoint = token ? '/api/login' : '/api/logout';
-  
-  await fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ idToken: token }),
-  });
-}
-
-
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
     const unsubscribe = onIdTokenChanged(auth, async (newUser) => {
       setUser(newUser);
-      const token = newUser ? await newUser.getIdToken() : null;
-      // This is the key change: we call our API to manage the session cookie
-      // whenever the Firebase Auth state changes.
-      await handleTokenChange(token);
+      setIsAdmin(newUser?.email === ADMIN_EMAIL);
       setLoading(false);
     });
 
@@ -60,12 +48,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (loading) return;
 
-    const isProtected = ['/dashboard', '/profile', '/progress', '/pronunciation', '/dialogues', '/vocabulary'].some(p => pathname.startsWith(p));
+    const isProtected = ['/dashboard', '/profile', '/progress', '/pronunciation', '/dialogues', '/vocabulary', '/admin'].some(p => pathname.startsWith(p));
 
     if (!user && isProtected) {
       router.push('/login');
     }
-
+    
     if (user && pathname === '/login') {
       router.push('/dashboard');
     }
@@ -80,5 +68,5 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     );
   }
 
-  return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, loading, isAdmin }}>{children}</AuthContext.Provider>;
 };
