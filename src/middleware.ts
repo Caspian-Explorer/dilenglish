@@ -11,6 +11,11 @@ export async function middleware(request: NextRequest) {
   const sessionCookie = request.cookies.get('session')?.value;
   const {pathname} = request.nextUrl;
 
+  // Allow all requests for static files, API routes, and images
+  if (pathname.startsWith('/api') || pathname.startsWith('/_next') || pathname.includes('.')) {
+    return NextResponse.next();
+  }
+
   if (pathname === '/login') {
     if (sessionCookie) {
       try {
@@ -39,6 +44,4 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
-};
+export const config = {};
