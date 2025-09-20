@@ -34,6 +34,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ idToken: token }),
         });
+        if (pathname === '/login') {
+            router.push('/dashboard');
+        }
       } else {
         if (pathname !== '/login') {
             await fetch('/api/logout', { method: 'POST' });
@@ -51,6 +54,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             <Loader className="animate-spin" size={32} />
         </div>
     );
+  }
+  
+  if (!user && pathname !== '/login') {
+      return null;
   }
 
   return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>;
