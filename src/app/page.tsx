@@ -95,6 +95,7 @@ const SiteHeader = () => (
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link href="#features" className="hover:text-primary">Features</Link>
             <Link href="/languages" className="hover:text-primary">Languages</Link>
+            <Link href="/forums" className="hover:text-primary">Forums</Link>
             <Link href="#testimonials" className="hover:text-primary">Testimonials</Link>
             <Link href="#community" className="hover:text-primary">Community</Link>
           </nav>
@@ -119,7 +120,7 @@ const SiteFooter = () => (
                    <h3 className="font-bold text-lg text-white">LEARN</h3>
                    <ul className="mt-4 space-y-2 text-sm">
                       <li><Link href="/languages" className="hover:text-white">Languages</Link></li>
-                       <li><Link href="#" className="hover:text-white">Pricing</Link></li>
+                       <li><Link href="/forums" className="hover:text-white">Forums</Link></li>
                        <li><Link href="#features" className="hover:text-white">Features</Link></li>
                    </ul>
                 </div>
