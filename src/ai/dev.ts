@@ -1,1 +1,5 @@
-// Flows will be imported for their side effects in this file.
+import { config } from 'dotenv';
+config();
+
+import '@/ai/flows/pronunciation-feedback.ts';
+import '@/ai/flows/useful-cultural-insights.ts';

@@ -1,3 +1,35 @@
+
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "badge-first-word",
+      "description": "Badge for practicing your first word.",
+      "imageUrl": "https://picsum.photos/seed/badge1/100/100",
+      "imageHint": "bronze medal"
+    },
+    {
+      "id": "badge-vocab-builder",
+      "description": "Badge for building a vocabulary list.",
+      "imageUrl": "https://picsum.photos/seed/badge2/100/100",
+      "imageHint": "silver medal"
+    },
+    {
+      "id": "badge-dialogue-expert",
+      "description": "Badge for completing a dialogue simulation.",
+      "imageUrl": "https://picsum.photos/seed/badge3/100/100",
+      "imageHint": "gold medal"
+    },
+    {
+      "id": "badge-pronunciation-pro",
+      "description": "Badge for achieving high pronunciation accuracy.",
+      "imageUrl": "https://picsum.photos/seed/badge4/100/100",
+      "imageHint": "diamond award"
+    },
+    {
+      "id": "badge-perfect-week",
+      "description": "Badge for practicing every day for a week.",
+      "imageUrl": "https://picsum.photos/seed/badge5/100/100",
+      "imageHint": "laurel wreath"
+    }
+  ]
 }
