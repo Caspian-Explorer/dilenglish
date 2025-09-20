@@ -1,8 +1,9 @@
+
 import { languageList } from '@/lib/languages';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export default function LanguagesPage() {
   const slugify = (text: string) => {
@@ -19,22 +20,22 @@ export default function LanguagesPage() {
           Choose a language to start your learning journey.
         </p>
       </div>
-      <Card>
-        <CardContent className="p-0">
-          <ul className="divide-y">
-            {languageList.map((language) => (
-              <li key={language}>
-                <Link href={`/languages/${slugify(language)}`} className="block hover:bg-secondary">
-                  <div className="flex items-center justify-between p-4">
-                    <span className="font-medium">{language}</span>
-                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+        {languageList.map((language) => (
+          <Link href={`/languages/${slugify(language)}`} key={language} className="block break-inside-avoid">
+            <Card className="hover:shadow-lg hover:border-primary transition-all">
+                <CardHeader>
+                    <CardTitle className="font-headline text-lg">{language}</CardTitle>
+                </CardHeader>
+                 <CardContent>
+                    <div className="flex justify-end">
+                       <ArrowRight className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                </CardContent>
+            </Card>
+          </Link>
+        ))}
+      </div>
        <div className="text-center mt-8">
           <Button variant="outline" asChild>
               <Link href="/">
