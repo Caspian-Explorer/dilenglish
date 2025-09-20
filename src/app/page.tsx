@@ -93,11 +93,11 @@ const SiteHeader = () => (
             <span className="text-xl font-bold font-headline">Dilenglish</span>
           </Link>
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-            <Link href="#features" className="hover:text-primary">Features</Link>
+            <Link href="/#features" className="hover:text-primary">Features</Link>
             <Link href="/languages" className="hover:text-primary">Languages</Link>
             <Link href="/forums" className="hover:text-primary">Forums</Link>
-            <Link href="#testimonials" className="hover:text-primary">Testimonials</Link>
-            <Link href="#community" className="hover:text-primary">Community</Link>
+            <Link href="/#testimonials" className="hover:text-primary">Testimonials</Link>
+            <Link href="/#community" className="hover:text-primary">Community</Link>
           </nav>
           <div className="flex items-center gap-2">
             <Button variant="outline" asChild>
@@ -121,15 +121,15 @@ const SiteFooter = () => (
                    <ul className="mt-4 space-y-2 text-sm">
                       <li><Link href="/languages" className="hover:text-white">Languages</Link></li>
                        <li><Link href="/forums" className="hover:text-white">Forums</Link></li>
-                       <li><Link href="#features" className="hover:text-white">Features</Link></li>
+                       <li><Link href="/#features" className="hover:text-white">Features</Link></li>
                    </ul>
                 </div>
                  <div>
                    <h3 className="font-bold text-lg text-white">COMPANY</h3>
                    <ul className="mt-4 space-y-2 text-sm">
-                      <li><Link href="#" className="hover:text-white">About</Link></li>
-                       <li><Link href="#" className="hover:text-white">Careers</Link></li>
-                       <li><Link href="#" className="hover:text-white">Press</Link></li>
+                      <li><Link href="/about" className="hover:text-white">About</Link></li>
+                       <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
+                       <li><Link href="/press" className="hover:text-white">Press</Link></li>
                    </ul>
                 </div>
                  <div>
@@ -182,7 +182,7 @@ const LandingPageContent = () => (
                 <Link href="/login">Start for Free</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                 <Link href="#features">Learn More</Link>
+                 <Link href="/#features">Learn More</Link>
               </Button>
             </div>
           </div>
