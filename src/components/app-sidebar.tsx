@@ -49,7 +49,7 @@ export default function AppSidebar() {
         <div className="flex items-center gap-2">
           <Languages className="size-8 text-primary" />
           <h1 className="font-headline text-2xl font-bold text-sidebar-foreground group-data-[collapsible=icon]:hidden">
-            LinguaLeap
+            Dilenglish
           </h1>
         </div>
       </SidebarHeader>

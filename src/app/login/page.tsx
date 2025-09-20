@@ -8,7 +8,7 @@ export default function LoginPage() {
         <div className="text-center">
             <div className="flex justify-center items-center gap-2 mb-4">
                 <Languages className="size-10 text-primary" />
-                <h1 className="text-4xl font-bold font-headline">LinguaLeap</h1>
+                <h1 className="text-4xl font-bold font-headline">Dilenglish</h1>
             </div>
           <p className="text-muted-foreground">
             Sign in to continue your language journey
