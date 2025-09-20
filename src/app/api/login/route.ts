@@ -2,6 +2,7 @@ import { authAdmin } from '@/lib/firebase-admin';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
+// This route handler is explicitly set to run on the Node.js runtime.
 export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {

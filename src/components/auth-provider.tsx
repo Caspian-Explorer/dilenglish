@@ -24,8 +24,8 @@ export const useAuth = () => {
   return context;
 };
 
+// This function now handles calling our API endpoints to set/clear the session cookie.
 async function handleTokenChange(token: string | null) {
-  const method = token ? 'POST' : 'DELETE';
   const endpoint = token ? '/api/login' : '/api/logout';
   
   await fetch(endpoint, {
@@ -48,6 +48,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const unsubscribe = onIdTokenChanged(auth, async (newUser) => {
       setUser(newUser);
       const token = newUser ? await newUser.getIdToken() : null;
+      // This is the key change: we call our API to manage the session cookie
+      // whenever the Firebase Auth state changes.
       await handleTokenChange(token);
       setLoading(false);
     });
