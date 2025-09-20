@@ -8,6 +8,7 @@ import {
   MessageCircle,
   Mic,
   BarChart3,
+  User,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -25,6 +26,7 @@ const navItems = [
   { href: '/dialogues', icon: MessageCircle, label: 'Dialogues' },
   { href: '/vocabulary', icon: BookOpen, label: 'Vocabulary' },
   { href: '/progress', icon: BarChart3, label: 'Progress' },
+  { href: '/profile', icon: User, label: 'Profile' },
 ];
 
 export default function AppSidebar() {

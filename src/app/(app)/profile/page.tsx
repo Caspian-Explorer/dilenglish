@@ -1,0 +1,111 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { userProgress } from "@/lib/data";
+import { Flame, Star } from "lucide-react";
+
+export default function ProfilePage() {
+  const user = {
+    name: 'Alex Doe',
+    email: 'alex.doe@example.com',
+    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d'
+  }
+
+  return (
+    <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
+      <div className="space-y-2">
+        <h1 className="text-3xl md:text-4xl font-bold font-headline tracking-tight">
+          My Profile
+        </h1>
+        <p className="text-muted-foreground">
+          Manage your account settings and preferences.
+        </p>
+      </div>
+
+      <div className="grid gap-8 md:grid-cols-3">
+        <div className="md:col-span-1 space-y-8">
+            <Card>
+                <CardHeader className="items-center text-center">
+                    <Avatar className="h-24 w-24 mb-4">
+                        <AvatarImage src={user.avatar} alt={user.name} />
+                        <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <CardTitle className="font-headline text-2xl">{user.name}</CardTitle>
+                    <CardDescription>{user.email}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex justify-around">
+                    <div className="text-center">
+                        <p className="text-2xl font-bold text-primary">{userProgress.points.toLocaleString()}</p>
+                        <p className="text-xs text-muted-foreground flex items-center gap-1"><Star className="h-3 w-3"/> Points</p>
+                    </div>
+                    <div className="text-center">
+                        <p className="text-2xl font-bold">{userProgress.dailyStreak}</p>
+                        <p className="text-xs text-muted-foreground flex items-center gap-1"><Flame className="h-3 w-3" /> Streak</p>
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
+
+        <div className="md:col-span-2 space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">Account Information</CardTitle>
+              <CardDescription>Update your personal details here.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Name</Label>
+                <Input id="name" defaultValue={user.name} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" type="email" defaultValue={user.email} />
+              </div>
+              <Button>Save Changes</Button>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle className="font-headline">Preferences</CardTitle>
+              <CardDescription>Customize your learning experience.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+               <div className="space-y-2">
+                <Label htmlFor="language">Learning Language</Label>
+                <Select defaultValue="spanish">
+                  <SelectTrigger id="language">
+                    <SelectValue placeholder="Select a language" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="spanish">Spanish</SelectItem>
+                    <SelectItem value="french">French</SelectItem>
+                    <SelectItem value="german">German</SelectItem>
+                    <SelectItem value="italian">Italian</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="theme">Theme</Label>
+                 <Select defaultValue="light">
+                  <SelectTrigger id="theme">
+                    <SelectValue placeholder="Select a theme" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="light">Light</SelectItem>
+                    <SelectItem value="dark">Dark</SelectItem>
+                    <SelectItem value="system">System</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+               <Button>Save Preferences</Button>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </main>
+  );
+}
