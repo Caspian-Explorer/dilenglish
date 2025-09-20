@@ -33,7 +33,7 @@ export default function LanguageDetailPage({ params }: { params: { slug: string 
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader>
             <CardTitle>Lessons</CardTitle>
@@ -71,6 +71,20 @@ export default function LanguageDetailPage({ params }: { params: { slug: string 
              <Button asChild className="w-full" variant="secondary">
               <Link href="/pronunciation">
                 Practice Pronunciation
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle>Grammar</CardTitle>
+            <CardDescription>Master the rules.</CardDescription>
+          </CardHeader>
+          <CardContent>
+             <Button asChild className="w-full" variant="secondary">
+              <Link href="#">
+                Practice Grammar
               </Link>
             </Button>
           </CardContent>
