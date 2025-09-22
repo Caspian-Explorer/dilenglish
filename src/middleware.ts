@@ -1,5 +1,4 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { adminAuth } from '@/lib/firebase-admin';
 
 export const runtime = 'nodejs';
 
@@ -11,31 +10,31 @@ export async function middleware(request: NextRequest) {
 
   const isProtected = protectedPaths.some(p => pathname.startsWith(p));
 
-  if (!sessionCookie && isProtected) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/login';
-    return NextResponse.redirect(url);
+  // If the user is trying to access a protected path without a session cookie, redirect to login.
+  if (isProtected && !sessionCookie) {
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  if (sessionCookie) {
-    try {
-      await adminAuth.verifySessionCookie(sessionCookie, true);
-      if (pathname === '/login') {
-        const url = request.nextUrl.clone();
-        url.pathname = '/dashboard';
-        return NextResponse.redirect(url);
-      }
-    } catch (error) {
-      console.log('Session cookie verification failed, clearing cookie');
-      const response = NextResponse.redirect(new URL('/login', request.url));
-      response.cookies.delete('session');
-      return response;
-    }
+  // If the user is logged in (has a session cookie) and tries to access the login page, redirect to dashboard.
+  if (pathname === '/login' && sessionCookie) {
+    return NextResponse.redirect(new URL('/dashboard', request.url));
   }
+
+  // A full verification of the session cookie will happen on the protected pages themselves.
+  // The middleware is just for basic routing.
 
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|manifest.json|sw.js|workbox-.*).*)'],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+  ],
 };
