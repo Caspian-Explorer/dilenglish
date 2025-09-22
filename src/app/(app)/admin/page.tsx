@@ -1,24 +1,6 @@
-'use client'
-
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { useAuth } from "@/components/auth-provider";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 export default function AdminPage() {
-    const { isAdmin, loading } = useAuth();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (!loading && !isAdmin) {
-            router.push('/dashboard');
-        }
-    }, [isAdmin, loading, router])
-
-    if (loading || !isAdmin) {
-        return null;
-    }
-
   return (
     <main className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
       <div className="space-y-2">

@@ -100,8 +100,8 @@ const SiteHeader = () => (
             <Link href="/#community" className="hover:text-primary">Community</Link>
           </nav>
           <div className="flex items-center gap-2">
-            <Button variant="outline" asChild>
-              <Link href="/login">Log In</Link>
+            <Button asChild>
+              <Link href="/dashboard">Get Started</Link>
             </Button>
           </div>
         </div>
@@ -179,7 +179,7 @@ const LandingPageContent = () => (
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button size="lg" asChild>
-                <Link href="/login">Start for Free</Link>
+                <Link href="/dashboard">Start for Free</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
                  <Link href="/#features">Learn More</Link>
@@ -272,7 +272,7 @@ const LandingPageContent = () => (
                    Turn learning into a game. Earn points, unlock new levels, and collect badges as you master new skills. Compete with friends and stay motivated on your language journey.
                   </p>
                   <Button className="mt-6" variant="outline" asChild>
-                    <Link href="/login">Start Learning</Link>
+                    <Link href="/dashboard">Start Learning</Link>
                   </Button>
                 </div>
                  <div className="relative h-64 md:h-full">
@@ -338,7 +338,7 @@ const LandingPageContent = () => (
             </p>
             <div className="mt-8 flex justify-center gap-4">
                <Button size="lg" variant="secondary" asChild>
-                <Link href="/login">Get Started Now</Link>
+                <Link href="/dashboard">Get Started Now</Link>
               </Button>
             </div>
           </div>

@@ -21,7 +21,6 @@ import {
   SidebarFooter,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { useAuth } from './auth-provider';
 
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -39,7 +38,7 @@ const adminNavItems = [
 
 export default function AppSidebar() {
   const pathname = usePathname();
-  const { isAdmin } = useAuth();
+  const isAdmin = false; // Temporarily disable admin functionality
 
   return (
     <Sidebar>
