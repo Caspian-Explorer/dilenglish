@@ -1,3 +1,5 @@
+'use client';
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +18,7 @@ export default function ProfilePage() {
   const handleLogout = async () => {
     await fetch('/api/logout', { method: 'POST' });
     router.push('/login');
+    router.refresh(); // Force a refresh to clear user state
   };
 
   if (!user) {
@@ -38,10 +41,10 @@ export default function ProfilePage() {
             <Card>
                 <CardHeader className="items-center text-center">
                     <Avatar className="h-24 w-24 mb-4">
-                        <AvatarImage src={user.photoURL ?? undefined} alt={user.displayName ?? ''} />
-                        <AvatarFallback>{user.displayName?.charAt(0) ?? user.email?.charAt(0)}</AvatarFallback>
+                        <AvatarImage src={user.picture ?? undefined} alt={user.name ?? ''} />
+                        <AvatarFallback>{user.name?.charAt(0) ?? user.email?.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <CardTitle className="font-headline text-2xl">{user.displayName ?? 'User'}</CardTitle>
+                    <CardTitle className="font-headline text-2xl">{user.name ?? 'User'}</CardTitle>
                     <CardDescription>{user.email}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex justify-around">
@@ -83,7 +86,7 @@ export default function ProfilePage() {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" defaultValue={user.displayName ?? ''} />
+                <Input id="name" defaultValue={user.name ?? ''} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>

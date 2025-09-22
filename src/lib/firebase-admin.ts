@@ -8,12 +8,13 @@ const serviceAccount = process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON
   ? JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON)
   : {};
 
-const app = getApps().length
-  ? getApps()[0]
-  : initializeApp({
+// This is the robust way to initialize the Firebase Admin SDK in a serverless environment.
+const app = !getApps().length
+  ? initializeApp({
       credential: cert(serviceAccount),
       projectId: firebaseConfig.projectId,
-    });
+    })
+  : getApps()[0];
 
 const adminAuth = getAuth(app);
 

@@ -42,11 +42,12 @@ export default function AppSidebar() {
   const pathname = usePathname();
   const { user } = useAuth();
   const router = useRouter();
-  const isAdmin = false; // Temporarily disable admin functionality
+  const isAdmin = user?.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
   const handleLogout = async () => {
     await fetch('/api/logout', { method: 'POST' });
     router.push('/login');
+    router.refresh();
   };
 
   return (
@@ -74,7 +75,7 @@ export default function AppSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
-        {isAdmin && user && adminNavItems.map((item) => (
+        {isAdmin && adminNavItems.map((item) => (
             <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                 asChild
