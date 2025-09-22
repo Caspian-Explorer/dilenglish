@@ -1,4 +1,3 @@
-
 import 'server-only';
 import admin from 'firebase-admin';
 import { applicationDefault } from 'firebase-admin/app';
@@ -9,7 +8,7 @@ if (!admin.apps.length) {
     // In a real production app, you would use admin.credential.cert() or applicationDefault()
     admin.initializeApp({
       credential: applicationDefault(),
-      projectId: process.env.FIREBASE_PROJECT_ID || 'studio-5054979338-10033',
+      projectId: "studio-5054979338-10033",
     });
   } catch (error) {
     console.error('Firebase admin initialization error', error);
