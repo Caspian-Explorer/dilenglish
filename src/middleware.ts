@@ -1,6 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { adminAuth } from '@/lib/firebase-admin';
 
+export const runtime = 'nodejs';
+
 const protectedPaths = ['/dashboard', '/profile', '/progress', '/pronunciation', '/dialogues', '/vocabulary', '/admin'];
 
 export async function middleware(request: NextRequest) {
