@@ -1,0 +1,48 @@
+[debug] [2025-09-22T14:59:35.683Z] [Firebase Plugin] Activating Firebase extension.
+[debug] [2025-09-22T14:59:42.752Z] [Firebase Plugin] requireAuthWrapper
+[debug] [2025-09-22T14:59:42.757Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-09-22T14:59:42.757Z] > authorizing via signed-in user (fuad.jalilov@gmail.com)
+[debug] [2025-09-22T14:59:42.760Z] Checked if tokens are valid: true, expires at: 1758556511130
+[debug] [2025-09-22T14:59:42.760Z] Checked if tokens are valid: true, expires at: 1758556511130
+[debug] [2025-09-22T14:59:42.760Z] [Firebase Plugin] User found:  fuad.jalilov@gmail.com
+[info] [Firebase Plugin] (Core:Project) New user detected, fetching projects
+[debug] [2025-09-22T14:59:42.762Z] Checked if tokens are valid: true, expires at: 1758556511130
+[debug] [2025-09-22T14:59:42.764Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-09-22T14:59:42.771Z] [Firebase Plugin] VSCode notification server listening on port 40001
+[info] [Firebase Plugin] Starting Data Connect toolkit (version 2.13.0) on port 50001
+[info] i  dataconnect: downloading dataconnect-emulator-2.13.0.exe... {"metadata":{"emulator":{"name":"dataconnect"},"message":"downloading dataconnect-emulator-2.13.0.exe..."}}
+[debug] [2025-09-22T14:59:44.225Z] >>> [apiv2][query] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.13.0 
+[debug] [2025-09-22T14:59:44.677Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-09-22T14:59:44.677Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-09-22T14:59:44.693Z] <<< [apiv2][status] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.13.0 200
+[debug] [2025-09-22T14:59:44.693Z] <<< [apiv2][body] GET https://storage.googleapis.com/firemat-preview-drop/emulator/dataconnect-emulator-windows-v2.13.0 [stream]
+[info] i  dataconnect: Removing outdated emulator files: dataconnect-emulator-2.12.0.exe {"metadata":{"emulator":{"name":"dataconnect"},"message":"Removing outdated emulator files: dataconnect-emulator-2.12.0.exe"}}
+[debug] [2025-09-22T15:00:02.873Z] I0922 18:00:02.858365   37848 control.go:94] [/emulator/dilenglish 6bfc] UpdateResources(): done
+Schema: sources: schema\schema.gql [1992B] 
+Connector "example": sources: example\mutations.gql [1243B] example\queries.gql [1801B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.858365   37848 control.go:94] [/emulator/dilenglish 6bfc] UpdateResources(): done\nSchema: sources: schema\\schema.gql [1992B] \nConnector \"example\": sources: example\\mutations.gql [1243B] example\\queries.gql [1801B] \n"}}
+[debug] [2025-09-22T15:00:02.874Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-09-22T15:00:02.874Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2025-09-22T15:00:02.874Z] Starting Data Connect Emulator with command {"binary":"C:\\Users\\fuadj\\.cache\\firebase\\emulators\\dataconnect-emulator-2.13.0.exe","args":["--logtostderr","-v=2","dev","--listen=localhost:50001","--config_dir=c:\\Users\\fuadj\\GitHub\\dilenglish\\dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"C:\\\\Users\\\\fuadj\\\\.cache\\\\firebase\\\\emulators\\\\dataconnect-emulator-2.13.0.exe\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=localhost:50001\",\"--config_dir=c:\\\\Users\\\\fuadj\\\\GitHub\\\\dilenglish\\\\dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
+[debug] [2025-09-22T15:00:02.902Z] I0922 18:00:02.901276   25952 load.go:31] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.901276   25952 load.go:31] Reloading schema and connectors...\n"}}
+[debug] [2025-09-22T15:00:02.929Z] I0922 18:00:02.930229   25952 control.go:94] [/emulator/dilenglish 7ffd] UpdateResources(): done
+Schema: sources: schema\schema.gql [1992B] 
+Connector "example": sources: example\mutations.gql [1243B] example\queries.gql [1801B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.930229   25952 control.go:94] [/emulator/dilenglish 7ffd] UpdateResources(): done\nSchema: sources: schema\\schema.gql [1992B] \nConnector \"example\": sources: example\\mutations.gql [1243B] example\\queries.gql [1801B] \n"}}
+[debug] [2025-09-22T15:00:02.950Z] I0922 18:00:02.950471   25952 codegen.go:82] [connector "example" javascriptSdk] Generating sources into "c:\\Users\\fuadj\\GitHub\\dilenglish\\src\\dataconnect-generated"
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.950471   25952 codegen.go:82] [connector \"example\" javascriptSdk] Generating sources into \"c:\\\\Users\\\\fuadj\\\\GitHub\\\\dilenglish\\\\src\\\\dataconnect-generated\"\n"}}
+[debug] [2025-09-22T15:00:02.960Z] I0922 18:00:02.958471   25952 collector.go:107] schema extensions wrote into "c:\\Users\\fuadj\\GitHub\\dilenglish\\dataconnect\\.dataconnect\\schema"
+Generated sources: main\relation.gql [13746B] main\query.gql [5099B] prelude.gql [73251B] main\mutation.gql [13679B] main\implicit.gql [1261B] main\input.gql [28173B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.958471   25952 collector.go:107] schema extensions wrote into \"c:\\\\Users\\\\fuadj\\\\GitHub\\\\dilenglish\\\\dataconnect\\\\.dataconnect\\\\schema\"\nGenerated sources: main\\relation.gql [13746B] main\\query.gql [5099B] prelude.gql [73251B] main\\mutation.gql [13679B] main\\implicit.gql [1261B] main\\input.gql [28173B] \n"}}
+[debug] [2025-09-22T15:00:02.963Z] I0922 18:00:02.964264   25952 collector.go:107] connector "example" javascriptSdk wrote into "c:\\Users\\fuadj\\GitHub\\dilenglish\\src\\dataconnect-generated"
+Generated sources: react\esm\index.esm.js [3269B] index.d.ts [8025B] esm\index.esm.js [3563B] react\index.cjs.js [3439B] react\README.md [48299B] esm\package.json [17B] index.cjs.js [4053B] package.json [863B] README.md [40931B] react\index.d.ts [3961B] react\package.json [460B] react\esm\package.json [17B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.964264   25952 collector.go:107] connector \"example\" javascriptSdk wrote into \"c:\\\\Users\\\\fuadj\\\\GitHub\\\\dilenglish\\\\src\\\\dataconnect-generated\"\nGenerated sources: react\\esm\\index.esm.js [3269B] index.d.ts [8025B] esm\\index.esm.js [3563B] react\\index.cjs.js [3439B] react\\README.md [48299B] esm\\package.json [17B] index.cjs.js [4053B] package.json [863B] README.md [40931B] react\\index.d.ts [3961B] react\\package.json [460B] react\\esm\\package.json [17B] \n"}}
+[debug] [2025-09-22T15:00:02.965Z] I0922 18:00:02.965477   25952 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation
+I0922 18:00:02.965477   25952 load.go:109] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.965477   25952 installsdk.go:55] Package @dataconnect/generated is already installed. Skipping installation\nI0922 18:00:02.965477   25952 load.go:109] Finished reloading\n"}}
+[debug] [2025-09-22T15:00:02.975Z] I0922 18:00:02.975883   25952 dev.go:102] Listening on address (HTTP + gRPC): 127.0.0.1:50001
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:02.975883   25952 dev.go:102] Listening on address (HTTP + gRPC): 127.0.0.1:50001\n"}}
+[debug] [2025-09-22T15:00:03.142Z] I0922 18:00:03.142757   25952 engine.go:169] [/emulator/dilenglish 7ffd] ExecuteGraphqlRead IntrospectionQuery: succeeded. 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I0922 18:00:03.142757   25952 engine.go:169] [/emulator/dilenglish 7ffd] ExecuteGraphqlRead IntrospectionQuery: succeeded. \n"}}
