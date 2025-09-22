@@ -6,12 +6,20 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { userProgress, userLanguageLevels } from "@/lib/data";
 import { Flame, Star, BookCheck } from "lucide-react";
+import { useAuth } from "@/components/auth-provider";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
-  const user = {
-    name: 'Alex Doe',
-    email: 'alex.doe@example.com',
-    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026704d'
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await fetch('/api/logout', { method: 'POST' });
+    router.push('/login');
+  };
+
+  if (!user) {
+    return null;
   }
 
   return (
@@ -30,10 +38,10 @@ export default function ProfilePage() {
             <Card>
                 <CardHeader className="items-center text-center">
                     <Avatar className="h-24 w-24 mb-4">
-                        <AvatarImage src={user.avatar} alt={user.name} />
-                        <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                        <AvatarImage src={user.photoURL ?? undefined} alt={user.displayName ?? ''} />
+                        <AvatarFallback>{user.displayName?.charAt(0) ?? user.email?.charAt(0)}</AvatarFallback>
                     </Avatar>
-                    <CardTitle className="font-headline text-2xl">{user.name}</CardTitle>
+                    <CardTitle className="font-headline text-2xl">{user.displayName ?? 'User'}</CardTitle>
                     <CardDescription>{user.email}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex justify-around">
@@ -75,13 +83,16 @@ export default function ProfilePage() {
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input id="name" defaultValue={user.name} />
+                <Input id="name" defaultValue={user.displayName ?? ''} />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" defaultValue={user.email} />
+                <Input id="email" type="email" defaultValue={user.email ?? ''} />
               </div>
-              <Button>Save Changes</Button>
+              <div className="flex gap-2">
+                <Button>Save Changes</Button>
+                <Button variant="destructive" onClick={handleLogout}>Logout</Button>
+              </div>
             </CardContent>
           </Card>
           
@@ -110,7 +121,7 @@ export default function ProfilePage() {
                  <Select defaultValue="light">
                   <SelectTrigger id="theme">
                     <SelectValue placeholder="Select a theme" />
-                  </SelectTrigger>
+                  </Trigger>
                   <SelectContent>
                     <SelectItem value="light">Light</SelectItem>
                     <SelectItem value="dark">Dark</SelectItem>

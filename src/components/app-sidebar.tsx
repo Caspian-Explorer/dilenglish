@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   BookOpen,
   Languages,
@@ -11,6 +11,7 @@ import {
   User,
   Globe,
   Shield,
+  LogOut,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -21,6 +22,7 @@ import {
   SidebarFooter,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
+import { useAuth } from '@/components/auth-provider';
 
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -38,7 +40,14 @@ const adminNavItems = [
 
 export default function AppSidebar() {
   const pathname = usePathname();
+  const { user } = useAuth();
+  const router = useRouter();
   const isAdmin = false; // Temporarily disable admin functionality
+
+  const handleLogout = async () => {
+    await fetch('/api/logout', { method: 'POST' });
+    router.push('/login');
+  };
 
   return (
     <Sidebar>
@@ -65,7 +74,7 @@ export default function AppSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
-        {isAdmin && adminNavItems.map((item) => (
+        {isAdmin && user && adminNavItems.map((item) => (
             <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                 asChild
@@ -81,6 +90,14 @@ export default function AppSidebar() {
         ))}
       </SidebarMenu>
       <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton onClick={handleLogout} tooltip="Logout">
+              <LogOut />
+              <span>Logout</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
         <SidebarTrigger />
       </SidebarFooter>
     </Sidebar>
